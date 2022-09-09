@@ -1,0 +1,14 @@
+
+<% if current_user %>
+ <h1>Welcome</h1>
+  <h3><%= current_user.name %></h3>
+ <h3><%= current_user.email %></h3>
+  <%= image_tag(current_user.image) unless current_user.image.nil? %>
+<%= link_to "Edit account", edit_user_registration_path%><br>
+<%= button_to "log_out",destroy_user_session_path, method: :delete %>
+<% else %>
+ 
+ <%= link_to "sign_in", new_user_session_path %><br>
+ <%= link_to "sign_up", new_user_registration_path,class: "btn btn-lg btn-primary rounded-pill" %> <br />
+  
+<% end %>
